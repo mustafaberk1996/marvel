@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/character_list_item_padding">
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgCharacter"
+            android:layout_width="@dimen/img_width"
+            android:layout_height="@dimen/img_width"
+            android:src="@mipmap/iron_man"
+            app:civ_border_width="1dp" />
+
+        <TextView
+            android:id="@+id/tvCharacterName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/c_name_m_left"
+            android:layout_toEndOf="@id/imgCharacter"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="IRON MAN IRON MAN IRON MAN IRON MAN " />
+    </RelativeLayout>
+</RelativeLayout>
