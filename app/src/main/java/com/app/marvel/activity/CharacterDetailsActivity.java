@@ -16,9 +16,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.app.marvel.ApiClient;
-import com.app.marvel.Constants;
+import com.app.marvel.utility.Constants;
 import com.app.marvel.R;
-import com.app.marvel.Utility;
+import com.app.marvel.utility.Utility;
 import com.app.marvel.adapter.ComicAdapter;
 import com.app.marvel.modal.BaseResponse;
 import com.app.marvel.modal.Character;
@@ -76,7 +76,7 @@ public class CharacterDetailsActivity extends AppCompatActivity implements View.
         actionBar.setTitle(character.getName());
         Glide.with(this).load(character.getThumbnail().getFullPath()).into(imgProfile);
         tvName.setText(character.getName());
-        tvDescription.setText(character.getDescription());
+        tvDescription.setText(character.getDescription().isEmpty() ? "-açıklama yok-" : character.getDescription());
 
         loadCommics(character.getId());
     }
@@ -89,30 +89,20 @@ public class CharacterDetailsActivity extends AppCompatActivity implements View.
         String dateRange = "2005-01-01" + "," + dateFormat.format(date);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext(), RecyclerView.VERTICAL, false);
         rvComics.setLayoutManager(linearLayoutManager);
-        characterService.loadComics(characterId, ts, Constants.PUBLIC_API_KEY, hash,dateRange, "modified",10).enqueue(new Callback<BaseResponse>() {
+        characterService.loadComics(characterId, ts, Constants.PUBLIC_API_KEY, hash, dateRange, "modified", 10).enqueue(new Callback<BaseResponse>() {
             @Override
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
                 Log.d(TAG, "onResponse: " + response.toString());
                 rlPb.setVisibility(View.GONE);
-                if (response.body() != null && response.body().getData() != null) {
-                    if (comicsList != null) {
-                        int startIndex = comicsList.size();
-                        comicsList.addAll(response.body().getData().getResults());
-                        comicAdapter.notifyItemRangeInserted(startIndex, response.body().getData().getResults().size());
-                    } else {
+                if (response.body() != null && response.body().getData() != null && response.body().getData().getResults() != null) {
+                    if (response.body().getData().getCount() > 0) {
                         comicsList = new ArrayList<>();
                         comicsList = response.body().getData().getResults();
                         comicAdapter = new ComicAdapter(CharacterDetailsActivity.this, comicsList);
-                        comicAdapter.setOnItemClickListener(character -> {
-                            Intent intent = new Intent(CharacterDetailsActivity.this, CharacterDetailsActivity.class);
-                            intent.putExtra(Constants.EXTRA_CHARACTER, new Gson().toJson(comicsList));
-                            startActivity(intent);
-                        });
-
                         rvComics.setAdapter(comicAdapter);
-                    }
-                }
-                else
+                    } else
+                        Toast.makeText(CharacterDetailsActivity.this, R.string.comics_not_found, Toast.LENGTH_SHORT).show();
+                } else
                     Toast.makeText(CharacterDetailsActivity.this, R.string.comics_not_found, Toast.LENGTH_SHORT).show();
 
             }

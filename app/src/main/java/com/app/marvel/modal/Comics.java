@@ -12,10 +12,25 @@ public class Comics {
     @SerializedName("title")
     @Expose
     private String title;
+    @SerializedName("thumbnail")
+    @Expose
+    private Thumbnail thumbnail;
 
-    public Comics(int id, String title) {
+    public Comics(int id, String title, Thumbnail thumbnail) {
         this.id = id;
         this.title = title;
+        this.thumbnail = thumbnail;
+    }
+
+
+
+
+    public Thumbnail getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(Thumbnail thumbnail) {
+        this.thumbnail = thumbnail;
     }
 
     public int getId() {

@@ -38,12 +38,22 @@
 " />
 
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvComics"
+    <TextView
+        android:id="@+id/tvTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tvDescription"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:text="@string/comics"
+        android:textSize="20sp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvComics"
+        android:background="@color/gray"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvTitle"
         android:layout_marginTop="10dp"
         tools:listitem="@layout/rl_comics_list_item" />
 
@@ -52,6 +62,7 @@
         layout="@layout/rl_progress"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/tvDescription" />
+        android:layout_below="@id/tvTitle"
+        android:visibility="visible" />
 
 </RelativeLayout>

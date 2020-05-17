@@ -1,4 +1,4 @@
-package com.app.marvel;
+package com.app.marvel.utility;
 
 import java.io.Serializable;
 

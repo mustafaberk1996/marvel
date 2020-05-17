@@ -57,7 +57,7 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.View
         Log.d(TAG, "onBindViewHolder: " + new Gson().toJson(characterList.get(position)));
         holder.tvCharacterName.setText(character.getName());
         holder.tvIndex.setText(position + 1 + ".");
-        Glide.with(context).load(character.getThumbnail().getPath() + "." + character.getThumbnail().getExtension()).into(holder.imgCharacter);
+        Glide.with(context).load(character.getThumbnail().getFullPath()).placeholder(R.mipmap.character_loading).into(holder.imgCharacter);
         holder.itemView.setOnClickListener(v -> listener.onItemClick(character));
     }
 

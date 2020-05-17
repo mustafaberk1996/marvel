@@ -1,17 +1,9 @@
 package com.app.marvel.service;
 
-import com.app.marvel.Constants;
 import com.app.marvel.modal.BaseResponse;
-import com.app.marvel.modal.Character;
-import com.google.gson.JsonObject;
 
-import java.util.List;
-
-import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.Response;
 import retrofit2.http.GET;
-import retrofit2.http.PATCH;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 

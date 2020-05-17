@@ -1,4 +1,4 @@
-package com.app.marvel;
+package com.app.marvel.utility;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;

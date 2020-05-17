@@ -3,5 +3,5 @@
     <dimen name="img_width">80dp</dimen>
     <dimen name="character_list_item_padding">10dp</dimen>
     <dimen name="c_name_m_left">15dp</dimen>
-    <dimen name="img_profile_detail_width">150dp</dimen>
+    <dimen name="img_profile_detail_width">100dp</dimen>
 </resources>

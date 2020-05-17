@@ -1,6 +1,4 @@
-package com.app.marvel;
-
-import java.util.Date;
+package com.app.marvel.utility;
 
 public class Utility {
 

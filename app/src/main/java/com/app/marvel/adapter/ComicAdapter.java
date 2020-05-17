@@ -1,10 +1,10 @@
 package com.app.marvel.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -18,8 +18,6 @@ import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 
 import java.util.List;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ComicAdapter extends RecyclerView.Adapter<ComicAdapter.ViewHolder> {
 
@@ -56,8 +54,7 @@ public class ComicAdapter extends RecyclerView.Adapter<ComicAdapter.ViewHolder> 
         Comics comics = new Gson().fromJson(itemJson, Comics.class);
         holder.tvIndex.setText(position + 1 +". ");
         holder.tvMovieName.setText(comics.getTitle());
-        //Glide.with(context).load(character.getThumbnail().getPath() + "." + character.getThumbnail().getExtension()).into(holder.imgCharacter);
-        //holder.itemView.setOnClickListener(v -> listener.onItemClick(co));
+        Glide.with(context).load(comics.getThumbnail().getFullPath()).placeholder(R.mipmap.poster_loading).into(holder.imgPoster);
     }
 
     @Override
@@ -68,12 +65,14 @@ public class ComicAdapter extends RecyclerView.Adapter<ComicAdapter.ViewHolder> 
     class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView tvMovieName,tvIndex;
+        ImageView imgPoster;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             tvMovieName = itemView.findViewById(R.id.tvMovieName);
             tvIndex = itemView.findViewById(R.id.tvIndex);
+            imgPoster = itemView.findViewById(R.id.imgPoster);
         }
     }
 }

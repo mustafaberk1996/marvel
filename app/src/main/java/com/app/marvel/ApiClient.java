@@ -2,8 +2,7 @@ package com.app.marvel;
 
 import android.os.Build;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.app.marvel.utility.Constants;
 
 import java.util.concurrent.TimeUnit;
 

@@ -3,4 +3,5 @@
     <string name="something_went_wrong">UUPPS Birşeyler ters gitti</string>
     <string name="comics_not_found">Çizgi Roman Bulunamadı</string>
     <string name="character_not_found">Karakter Bulunamadı</string>
+    <string name="comics">Çizgi Romanlar</string>
 </resources>

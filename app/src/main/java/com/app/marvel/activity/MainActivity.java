@@ -6,38 +6,27 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.os.health.TimerStat;
 import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.app.marvel.ApiClient;
-import com.app.marvel.Constants;
-import com.app.marvel.EndlessRecyclerViewScrollListener;
-import com.app.marvel.MD5;
+import com.app.marvel.utility.Constants;
+import com.app.marvel.utility.EndlessRecyclerViewScrollListener;
 import com.app.marvel.R;
-import com.app.marvel.Utility;
+import com.app.marvel.utility.Utility;
 import com.app.marvel.adapter.CharacterAdapter;
 import com.app.marvel.modal.BaseResponse;
-import com.app.marvel.modal.Character;
 import com.app.marvel.service.CharacterService;
 import com.google.gson.Gson;
 
-import java.io.Serializable;
-import java.io.UnsupportedEncodingException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.security.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
-import com.app.marvel.modal.BaseResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;
