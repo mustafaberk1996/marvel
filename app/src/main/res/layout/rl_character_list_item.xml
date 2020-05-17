@@ -15,7 +15,9 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_margin="5dp"
-            android:text="242" />
+            android:text="242"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imgCharacter"
@@ -34,6 +36,7 @@
             android:layout_toEndOf="@id/imgCharacter"
             android:ellipsize="end"
             android:maxLines="2"
-            android:text="IRON MAN IRON MAN IRON MAN IRON MAN " />
+            android:text="IRON MAN IRON MAN IRON MAN IRON MAN "
+            android:textSize="18sp" />
     </RelativeLayout>
 </RelativeLayout>

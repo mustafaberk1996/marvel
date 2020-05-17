@@ -4,4 +4,5 @@
     <string name="comics_not_found">Çizgi Roman Bulunamadı</string>
     <string name="character_not_found">Karakter Bulunamadı</string>
     <string name="comics">Çizgi Romanlar</string>
+    <string name="marvel_characters">Marvel Karakterleri</string>
 </resources>
