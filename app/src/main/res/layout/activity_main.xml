@@ -7,11 +7,14 @@
     tools:context=".activity.MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
         android:id="@+id/rvCharacters"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:listitem="@layout/rl_character_list_item" />
 
+    <include
+        android:id="@+id/rlPb"
+        layout="@layout/rl_progress" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

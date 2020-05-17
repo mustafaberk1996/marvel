@@ -9,11 +9,19 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/character_list_item_padding">
 
+        <TextView
+            android:id="@+id/tvIndex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            android:text="242" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imgCharacter"
             android:layout_width="@dimen/img_width"
             android:layout_height="@dimen/img_width"
+            android:layout_toRightOf="@id/tvIndex"
             android:src="@mipmap/iron_man"
             app:civ_border_width="1dp" />
 

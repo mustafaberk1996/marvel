@@ -31,6 +31,7 @@ public class ApiClient {
                 rootUrl = rootUrl.replace("https", "http");
             retrofit = new Retrofit.Builder()
                     .baseUrl(rootUrl)
+                    .addConverterFactory(GsonConverterFactory.create())
                     .client(okHttpClient)
                     .build();
             return retrofit;

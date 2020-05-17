@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.marvel.R;
 import com.app.marvel.modal.Character;
+import com.app.marvel.modal.Comics;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 
@@ -20,18 +21,18 @@ import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.ViewHolder> {
+public class ComicAdapter extends RecyclerView.Adapter<ComicAdapter.ViewHolder> {
 
-    private static final String TAG = CharacterAdapter.class.getSimpleName();
+    private static final String TAG = ComicAdapter.class.getSimpleName();
     Context context;
-    List<Object> characterList;
+    List<Object> comicList;
 
     public itemClickListener listener;
 
 
-    public CharacterAdapter(Context context, List<Object> characterList) {
+    public ComicAdapter(Context context, List<Object> comicList) {
         this.context = context;
-        this.characterList = characterList;
+        this.comicList = comicList;
     }
 
     public void setOnItemClickListener(itemClickListener listener) {
@@ -45,36 +46,33 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.View
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        RelativeLayout item = (RelativeLayout) LayoutInflater.from(context).inflate(R.layout.rl_character_list_item, null);
+        RelativeLayout item = (RelativeLayout) LayoutInflater.from(context).inflate(R.layout.rl_comics_list_item, null);
         return new ViewHolder(item);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        ///  Character character = (Character) characterList.get(position);
-        String itemJson = new Gson().toJson(characterList.get(position));
-        Character character = new Gson().fromJson(itemJson, Character.class);
-        Log.d(TAG, "onBindViewHolder: " + new Gson().toJson(characterList.get(position)));
-        holder.tvCharacterName.setText(character.getName());
-        holder.tvIndex.setText(position + 1 + ".");
-        Glide.with(context).load(character.getThumbnail().getPath() + "." + character.getThumbnail().getExtension()).into(holder.imgCharacter);
-        holder.itemView.setOnClickListener(v -> listener.onItemClick(character));
+        String itemJson = new Gson().toJson(comicList.get(position));
+        Comics comics = new Gson().fromJson(itemJson, Comics.class);
+        holder.tvIndex.setText(position + 1 +". ");
+        holder.tvMovieName.setText(comics.getTitle());
+        //Glide.with(context).load(character.getThumbnail().getPath() + "." + character.getThumbnail().getExtension()).into(holder.imgCharacter);
+        //holder.itemView.setOnClickListener(v -> listener.onItemClick(co));
     }
 
     @Override
     public int getItemCount() {
-        return characterList.size();
+        return comicList.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        CircleImageView imgCharacter;
-        TextView tvCharacterName, tvIndex;
+        TextView tvMovieName,tvIndex;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            imgCharacter = itemView.findViewById(R.id.imgCharacter);
-            tvCharacterName = itemView.findViewById(R.id.tvCharacterName);
+
+            tvMovieName = itemView.findViewById(R.id.tvMovieName);
             tvIndex = itemView.findViewById(R.id.tvIndex);
         }
     }
